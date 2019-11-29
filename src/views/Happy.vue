@@ -1,71 +1,84 @@
 <template>
-  <div>
-    <div class="phone-viewport">
-      <md-bottom-bar md-type="shift">
-        <md-bottom-bar-item
-          id="bottom-bar-item-home"
-          md-label="Home"
-          md-icon="home"
-        ></md-bottom-bar-item>
-        <md-bottom-bar-item
-          id="bottom-bar-item-pages"
-          md-label="Pages"
-          md-icon="pages"
-        ></md-bottom-bar-item>
-        <md-bottom-bar-item
-          id="bottom-bar-item-posts"
-          md-label="Posts"
-          md-icon="/assets/icon-whatshot.svg"
-        ></md-bottom-bar-item>
-        <md-bottom-bar-item
-          id="bottom-bar-item-favorites"
-          md-label="Favorites"
-          md-icon="favorite"
-        ></md-bottom-bar-item>
-      </md-bottom-bar>
+  <div class="row">
+    <div class="col-2">
+      <div class="form-group">
+        <div class="btn-group-vertical buttons" role="group" aria-label="Basic example">
+          <button class="btn btn-secondary" @click="add">Add</button>
+          <button class="btn btn-secondary" @click="replace">Replace</button>
+        </div>
+
+        <div class="form-check">
+          <input id="disabled" type="checkbox" v-model="enabled" class="form-check-input" />
+          <label class="form-check-label" for="disabled">DnD enabled</label>
+        </div>
+      </div>
     </div>
 
-    <div class="phone-viewport">
-      <md-bottom-bar class="md-accent" md-type="shift">
-        <md-bottom-bar-item
-          id="bottom-bar-item-home"
-          md-label="Home"
-          md-icon="home"
-        ></md-bottom-bar-item>
-        <md-bottom-bar-item
-          id="bottom-bar-item-pages"
-          md-label="Pages"
-          md-icon="pages"
-        ></md-bottom-bar-item>
-        <md-bottom-bar-item
-          id="bottom-bar-item-posts"
-          md-label="Posts"
-          md-icon="/assets/icon-whatshot.svg"
-        ></md-bottom-bar-item>
-        <md-bottom-bar-item
-          id="bottom-bar-item-favorites"
-          md-label="Favorites"
-          md-icon="favorite"
-        ></md-bottom-bar-item>
-      </md-bottom-bar>
+    <div class="col-6">
+      <h3>Draggable {{ draggingInfo }}</h3>
+
+      <draggable
+        :list="list"
+        :disabled="!enabled"
+        class="list-group"
+        ghost-class="ghost"
+        :move="checkMove"
+        @start="dragging = true"
+        @end="dragging = false"
+      >
+        <div class="list-group-item" v-for="element in list" :key="element.name">{{ element.name }}</div>
+      </draggable>
     </div>
+
+    <rawDisplayer class="col-3" :value="list" title="List" />
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
+let id = 1
 export default {
-  name: 'Happy'
+  name: 'Happy',
+  display: 'Simple',
+  order: 0,
+  components: {
+    draggable
+  },
+  data () {
+    return {
+      enabled: true,
+      list: [
+        { name: 'John', id: 0 },
+        { name: 'Joao', id: 1 },
+        { name: 'Jean', id: 2 }
+      ],
+      dragging: false
+    }
+  },
+  computed: {
+    draggingInfo () {
+      return this.dragging ? 'under drag' : ''
+    }
+  },
+  methods: {
+    add: function () {
+      this.list.push({ name: 'Juan ' + id, id: id++ })
+    },
+    replace: function () {
+      this.list = [{ name: 'Edgard', id: id++ }]
+    },
+    checkMove: function (e) {
+      window.console.log('Future index: ' + e.draggedContext.futureIndex)
+    }
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-.phone-viewport {
-  width: 322px;
-  height: 200px;
-  display: inline-flex;
-  align-items: flex-end;
-  overflow: hidden;
-  border: 1px solid rgba(#000, 0.26);
-  background: rgba(#000, 0.06);
+<style scoped>
+.buttons {
+  margin-top: 35px;
+}
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
 }
 </style>
