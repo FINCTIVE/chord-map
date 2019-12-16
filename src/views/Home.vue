@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div>
     <div class="container">
       <button class="md-button" @click="add">Add</button>
@@ -37,27 +36,15 @@
         </draggable>
       </div>
     </div>
-=======
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <DND msg="Welcome to Your Vue.js App" />
->>>>>>> 841ce09650572084b350ccd6ab0de8983c3f88d5
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
 import draggable from 'vuedraggable'
 let id = 1
-=======
-// @ is an alias to /src
-import DND from '@/components/DND.vue'
-
->>>>>>> 841ce09650572084b350ccd6ab0de8983c3f88d5
 export default {
   name: 'Home',
   components: {
-<<<<<<< HEAD
     draggable
   },
   data () {
@@ -85,9 +72,6 @@ export default {
     checkMove: function (e) {
       window.console.log('Future index: ' + e.draggedContext.futureIndex)
     }
-=======
-    DND
->>>>>>> 841ce09650572084b350ccd6ab0de8983c3f88d5
   }
 }
 </script>
