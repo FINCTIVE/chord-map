@@ -932,7 +932,7 @@
     webpack "^4.0.0"
     yorkie "^2.0.0"
 
-"@vue/cli-plugin-router@^4.0.0", "@vue/cli-plugin-router@^4.0.5":
+"@vue/cli-plugin-router@^4.0.5":
   version "4.0.5"
   resolved "https://registry.npm.taobao.org/@vue/cli-plugin-router/download/@vue/cli-plugin-router-4.0.5.tgz#2891520a6293bbd6d7784fa14e1041a41ba6d4fd"
   integrity sha1-KJFSCmKTu9bXeE+hThBBpBum1P0=

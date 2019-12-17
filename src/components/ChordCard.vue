@@ -1,6 +1,6 @@
 <template>
     <div>
-        <md-card class="chord">
+        <md-card class="chord-card">
               <md-card-header>
                 <div class="md-title">{{ chordName }}</div>
               </md-card-header>
@@ -20,7 +20,7 @@ export default {
 }
 </script>
 <style scoped>
-.chord{
+.chord-card{
   margin: 20px auto;
   display: block;
 }
