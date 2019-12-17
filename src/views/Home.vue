@@ -10,6 +10,7 @@
         <draggable
           :list="list"
           :disabled="!enabled"
+          :animation="200"
           class="list-group"
           ghost-class="ghost-chord"
           :move="checkMove"
@@ -17,21 +18,7 @@
           @end="dragging = false"
         >
           <div v-for="element in list" :key="element.name">
-            <!-- <md-content class="md-elevation-2 chord">{{ element.name }}</md-content> -->
-            <md-card class="chord">
-              <md-card-header>
-                <div class="md-title">{{ element.name }}</div>
-              </md-card-header>
-
-              <md-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non.
-              </md-card-content>
-
-              <md-card-actions>
-                <md-button>Action</md-button>
-                <md-button>Action</md-button>
-              </md-card-actions>
-            </md-card>
+            <ChordCard v-bind:chordName="element.name"></ChordCard>
           </div>
         </draggable>
       </div>
@@ -41,11 +28,13 @@
 
 <script>
 import draggable from 'vuedraggable'
+import ChordCard from '../components/ChordCard.vue'
 let id = 1
 export default {
   name: 'Home',
   components: {
-    draggable
+    draggable,
+    ChordCard
   },
   data () {
     return {
@@ -85,9 +74,4 @@ export default {
 /* .list-group{
   opacity: 0.5;
 } */
-
-.chord{
-  margin: 20px auto;
-  display: block;
-}
 </style>
