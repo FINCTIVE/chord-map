@@ -5,7 +5,7 @@
       <button class="md-button" @click="replace">Replace</button>
       <!-- 设置是否禁用拖拽 -->
       <!-- <input id="disabled" type="checkbox" v-model="enabled" class="form-check-input" />
-      <label class="form-check-label" for="disabled">DnD enabled</label> -->
+      <label class="form-check-label" for="disabled">DnD enabled</label>-->
       <div class="chord-container">
         <draggable
           :list="list"
@@ -23,9 +23,7 @@
                 <div class="md-title">{{ element.name }}</div>
               </md-card-header>
 
-              <md-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non.
-              </md-card-content>
+              <md-card-content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non.</md-card-content>
 
               <md-card-actions>
                 <md-button>Action</md-button>
@@ -51,11 +49,11 @@ export default {
     return {
       enabled: true,
       list: [
-        { name: 'wula', id: 0 },
-        { name: 'Joao', id: 1 },
+        { name: 'D', id: 0 },
+        { name: 'B', id: 1 },
         { name: 'C#', id: 2 },
-        { name: 'J-FLAT', id: 3 },
-        { name: 'GIAO', id: 4 }
+        { name: 'A♭', id: 3 },
+        { name: 'G', id: 4 }
       ],
       dragging: false
     }
@@ -86,7 +84,7 @@ export default {
   opacity: 0.5;
 } */
 
-.chord{
+.chord {
   margin: 20px auto;
   display: block;
 }
