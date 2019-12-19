@@ -35,13 +35,14 @@
       </md-dialog-actions>
     </md-dialog>
     <!-- 和弦排序 -->
-    <div class="chord-sequencer">
-      <draggable :list="list" :animation="200" ghost-class="ghost-chord" :move="checkMove">
-        <div v-for="element in list" :key="element.id">
-          <ChordCard v-bind:chordNumber="element.chordNumber" v-bind:keyName="keyName"></ChordCard>
-        </div>
-      </draggable>
-    </div>
+    <draggable :list="list" :animation="200" ghost-class="ghost-chord" class="chord-sequencer">
+      <ChordCard v-for="element in list"
+      :key="element.chordCardId"
+      :chordNumber="element.chordNumber"
+      :keyName="keyName"
+      :chordCardId="element.chordCardId"
+      v-on:remove-chord-card="removeChordCard"></ChordCard>
+    </draggable>
   </div>
 </template>
 
@@ -57,8 +58,15 @@ export default {
   data () {
     return {
       list: [
-        { id: 1, chordNumber: 1 },
-        { id: 2, chordNumber: 4 }
+        { chordCardId: 1, chordNumber: 1 },
+        // { chordCardId: 2, chordNumber: 4 },
+        // { chordCardId: 3, chordNumber: 3 },
+        // { chordCardId: 5, chordNumber: 4 },
+        // { chordCardId: 32, chordNumber: 3 },
+        // { chordCardId: 232, chordNumber: 3 },
+        { chordCardId: 3211, chordNumber: 3 },
+        { chordCardId: 82, chordNumber: 3 },
+        { chordCardId: 44, chordNumber: 7 }
       ],
       showAbout: false,
       showKeyChooser: false,
@@ -71,6 +79,15 @@ export default {
       let scale = ''
       if (this.musicScale === 'Major') { scale = '' } else { scale = 'm' }
       return this.musicKey + scale
+    }
+  },
+  methods: {
+    removeChordCard: function (chordCardID) {
+      let index = 0
+      for (; this.list[index].chordCardId !== chordCardID; ++index);
+      if (index > -1) {
+        this.list.splice(index, 1)
+      }
     }
   }
 }
@@ -99,6 +116,9 @@ export default {
   margin-bottom: 1em;
 }
 .chord-sequencer {
-  padding-top: 30px;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
