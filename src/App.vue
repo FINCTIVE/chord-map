@@ -65,7 +65,7 @@ export default {
         // { chordCardId: 32, chordNumber: 3 },
         // { chordCardId: 232, chordNumber: 3 },
         { chordCardId: 3211, chordNumber: 3 },
-        { chordCardId: 82, chordNumber: 3 },
+        { chordCardId: 82, chordNumber: 4 },
         { chordCardId: 44, chordNumber: 7 }
       ],
       showAbout: false,
