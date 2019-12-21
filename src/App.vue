@@ -9,7 +9,7 @@
     <div class="top-menu" md-elevation="0">
       <md-button class="md-primary key-chooser-btn" @click="showKeyChooser = true">
         <!-- <md-icon>music_note</md-icon> -->
-        KEY {{musicTheory.getChordName(1)}}
+        KEY {{musicTheory.songScale.getChord(1).getName()}}
       </md-button>
       <md-button class="md-primary add-btn" @click="showAddChordOptions = true">
         Add Chord
@@ -22,16 +22,16 @@
     <md-dialog :md-active.sync="showKeyChooser" class="music-options">
       <md-dialog-title>Settings</md-dialog-title>
       <div class="key-chooser-options">
-        <md-radio v-model="musicTonic" :value="'C'" v-on:change="changeTonic">C</md-radio>
-        <md-radio v-model="musicTonic" :value="'D'" v-on:change="changeTonic">D</md-radio>
-        <md-radio v-model="musicTonic" :value="'E'" v-on:change="changeTonic">E</md-radio>
-        <md-radio v-model="musicTonic" :value="'F'" v-on:change="changeTonic">F</md-radio>
-        <md-radio v-model="musicTonic" :value="'A'" v-on:change="changeTonic">A</md-radio>
-        <md-radio v-model="musicTonic" :value="'B'" v-on:change="changeTonic">B</md-radio>
+        <md-radio v-model="settingTonicName" :value="'C'" v-on:change="changeTonic">C</md-radio>
+        <md-radio v-model="settingTonicName" :value="'D'" v-on:change="changeTonic">D</md-radio>
+        <md-radio v-model="settingTonicName" :value="'E'" v-on:change="changeTonic">E</md-radio>
+        <md-radio v-model="settingTonicName" :value="'F'" v-on:change="changeTonic">F</md-radio>
+        <md-radio v-model="settingTonicName" :value="'A'" v-on:change="changeTonic">A</md-radio>
+        <md-radio v-model="settingTonicName" :value="'B'" v-on:change="changeTonic">B</md-radio>
       </div>
       <div class="scale-chooser-options">
-        <md-radio v-model="musicScale" :value="'Major'" v-on:change="changeScale">Major</md-radio>
-        <md-radio v-model="musicScale" :value="'Minor'" v-on:change="changeScale">Minor</md-radio>
+        <md-radio v-model="settingScaleTypeName" :value="'Major'" v-on:change="changeScale">Major</md-radio>
+        <md-radio v-model="settingScaleTypeName" :value="'Minor'" v-on:change="changeScale">Minor</md-radio>
       </div>
       <md-dialog-actions>
         <md-button class="md-primary" @click="showKeyChooser = false">Close</md-button>
@@ -52,9 +52,9 @@
         v-for="element in list"
         :key="element.chordCardId"
         :chordCardId="element.chordCardId"
-        :chordNumber="musicTheory.getChordNumber(element.chordNumber)"
-        :chordName="musicTheory.getChordName(element.chordNumber)"
-        :chordStructure="musicTheory.getChordStructure(element.chordNumber)"
+        :chordNumber="musicTheory.songScale.getRomanNumerals(element.chordNumber)"
+        :chordName="musicTheory.songScale.getChord(element.chordNumber).getName()"
+        :chordStructure="musicTheory.songScale.getChord(element.chordNumber).structure.map(x => x.getName())"
         v-on:remove-chord-card="removeChordCard"
       ></ChordCard>
     </draggable>
@@ -76,15 +76,15 @@ export default {
     return {
       list: [
         { chordCardId: 1, chordNumber: 1 },
-        { chordCardId: 3211, chordNumber: 3 },
-        { chordCardId: 82, chordNumber: 4 },
-        { chordCardId: 44, chordNumber: 7 }
+        { chordCardId: 3211, chordNumber: 2 },
+        { chordCardId: 82, chordNumber: 3 },
+        { chordCardId: 44, chordNumber: 4 }
       ],
       showAbout: false,
       showKeyChooser: false,
       showAddChordOptions: false,
-      musicTonic: 'C',
-      musicScale: 'Major',
+      settingTonicName: 'C',
+      settingScaleTypeName: 'Major',
       musicTheory: new MusicTheory('C', 'Major')
     }
   },
@@ -97,10 +97,10 @@ export default {
       }
     },
     changeTonic: function (tonic) {
-      this.musicTheory.initScale(this.musicTonic, this.musicScale)
+      this.musicTheory.songScale = new this.musicTheory.Scale(this.settingTonicName, this.settingScaleTypeName)
     },
     changeScale: function (scale) {
-      this.musicTheory.initScale(this.musicTonic, this.musicScale)
+      this.musicTheory.songScale = new this.musicTheory.Scale(this.settingTonicName, this.settingScaleTypeName)
     }
   }
 }
