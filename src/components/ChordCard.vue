@@ -3,12 +3,12 @@
     <md-card md-with-hover>
       <md-card-header>
         <div>
-          <span class="chord-number md-title">{{ getChordNumber(chordNumber) }}</span>
-          <span class="chord-name  md-title">{{ 'Am' }}</span>
+          <span class="chord-number md-title">{{ chordNumber }}</span>
+          <span class="chord-name  md-title">{{ chordName }}</span>
         </div>
       </md-card-header>
       <md-card-content class="chord-notes">
-        <span class="chord-note md-headline" v-for="note in testChordStruct" :key="note">{{ note }}</span>
+        <span class="chord-note md-headline" v-for="note in chordStructure" :key="note">{{ note }}</span>
       </md-card-content>
       <md-card-actions>
         <md-button @click="$emit('remove-chord-card', chordCardId);">Remove</md-button>
@@ -19,20 +19,7 @@
 <script>
 export default {
   name: 'ChordCard',
-  props: ['chordCardId', 'chordNumber', 'keyName'],
-  data () {
-    return {
-      majorNumbers: ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii°'],
-      minorNumbers: ['i', 'ii°', 'III', 'iv', 'V(v)', 'VI', 'VII', 'vii°'],
-      testChordStruct: ['C', 'E', 'G']
-    }
-  },
-  methods: {
-    getChordNumber: function (n) {
-      let majorNumbers = ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii°']
-      return majorNumbers[n - 1]
-    }
-  }
+  props: ['chordCardId', 'chordNumber', 'chordName', 'chordStructure']
 }
 </script>
 <style scoped>
