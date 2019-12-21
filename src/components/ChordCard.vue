@@ -3,8 +3,8 @@
     <md-card md-with-hover>
       <md-card-header>
         <div>
-          <span class="chord-number md-title">{{ chordNumber }}</span>
-          <span class="chord-name  md-title">{{ chordName }}</span>
+          <span class="chord-number md-title">{{ chordRomanNumeral }}</span>
+          <span class="chord-name md-title">{{ chordName }}</span>
         </div>
       </md-card-header>
       <md-card-content class="chord-notes">
@@ -19,7 +19,7 @@
 <script>
 export default {
   name: 'ChordCard',
-  props: ['chordCardId', 'chordNumber', 'chordName', 'chordStructure']
+  props: ['chordCardId', 'chordRomanNumeral', 'chordName', 'chordStructure']
 }
 </script>
 <style scoped>

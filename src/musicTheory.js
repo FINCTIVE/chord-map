@@ -153,25 +153,6 @@ function MusicTheory (iTonicName, iScaleTypeName) {
   this.songScale = new this.Scale(iTonicName, iScaleTypeName)
 }
 
-// 测试代码
-// let iTonicName = 'G'
-// let iScaleTypeName = 'Minor'
-// var testScale = new Scale(iTonicName, iScaleTypeName)
-// console.log('tonic:', iTonicName)
-// console.log('scaleType:', iScaleTypeName)
-// // for (let i = 0; i < testScale.notes.length; ++i) {
-// //   console.log('notes:', testScale.notes[i].getName())
-// // }
-// for (let i = 0; i < testScale.chords.length; ++i) {
-//   console.log('----------')
-//   console.log('chord name:', testScale.chords[i].getName())
-//   console.log('chord roman numeral:', testScale.getRomanNumerals(i + 1))
-//   console.log('chord structure')
-//   console.log('---', testScale.chords[i].structure[0].getName())
-//   console.log('---', testScale.chords[i].structure[1].getName())
-//   console.log('---', testScale.chords[i].structure[2].getName())
-// }
-
 export {
   MusicTheory
 }
