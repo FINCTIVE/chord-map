@@ -17,11 +17,21 @@
       <md-button class="md-primary about-btn" @click="showAbout = true">ABOUT</md-button>
     </div>
     <!-- About -->
-    <md-dialog-alert :md-active.sync="showAbout" md-content="Hi! This website was created by FINCTIVE. Contact:finctive@qq.com" md-confirm-text="Close" />
+    <md-dialog :md-active.sync="showAbout" class="dialog-window">
+      <div class="md-title">About</div>
+      <div class="md-body-1">
+        <p>联系开发者：finctive@qq.com</p>
+        <p>各项功能还没有完成开发，欢迎提建议~</p>
+        <p>本网站使用了以下开源框架：vuejs, vuematerial, draggable</p>
+      </div>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="showAbout = false">Close</md-button>
+      </md-dialog-actions>
+    </md-dialog>
     <!-- KeyChooser Window-->
-    <md-dialog :md-active.sync="showKeyChooser" class="music-options">
-      <md-dialog-title>Settings</md-dialog-title>
-      <div class="key-chooser-options">
+    <md-dialog :md-active.sync="showKeyChooser" class="dialog-window">
+      <div class="md-title">Settings</div>
+      <div>
         <md-radio v-model="settingTonicName" :value="'C'" v-on:change="changeTonic">C</md-radio>
         <md-radio v-model="settingTonicName" :value="'D'" v-on:change="changeTonic">D</md-radio>
         <md-radio v-model="settingTonicName" :value="'E'" v-on:change="changeTonic">E</md-radio>
@@ -29,7 +39,7 @@
         <md-radio v-model="settingTonicName" :value="'A'" v-on:change="changeTonic">A</md-radio>
         <md-radio v-model="settingTonicName" :value="'B'" v-on:change="changeTonic">B</md-radio>
       </div>
-      <div class="scale-chooser-options">
+      <div>
         <md-radio v-model="settingScaleTypeName" :value="'Major'" v-on:change="changeScale">Major</md-radio>
         <md-radio v-model="settingScaleTypeName" :value="'Minor'" v-on:change="changeScale">Minor</md-radio>
       </div>
@@ -37,10 +47,10 @@
         <md-button class="md-primary" @click="showKeyChooser = false">Close</md-button>
       </md-dialog-actions>
     </md-dialog>
-    <!-- Add Chord -->
-    <md-dialog :md-active.sync="showAddChordOptions" class="music-options">
-      <md-dialog-title>Choose the chord number</md-dialog-title>
-      <div class="key-chooser-options">
+    <!-- Add Chord Window-->
+    <md-dialog :md-active.sync="showAddChordOptions" class="dialog-window">
+      <div class="md-title">Choose the chord number</div>
+      <div>
         <md-radio v-model="newChordNumber" :value=1>1</md-radio>
         <md-radio v-model="newChordNumber" :value=2>2</md-radio>
         <md-radio v-model="newChordNumber" :value=3>3</md-radio>
@@ -53,7 +63,7 @@
         <md-button class="md-primary" @click="showAddChordOptions = false; addNewChord()">Add</md-button>
       </md-dialog-actions>
     </md-dialog>
-    <!-- 和弦排序 -->
+    <!-- 和弦卡片排序 -->
     <draggable :list="list" :animation="200" ghost-class="ghost-chord" class="chord-sequencer">
       <ChordCard
         v-for="element in list"
@@ -146,7 +156,7 @@ export default {
 .about {
   float: right;
 }
-.music-options * {
+.dialog-window * {
   margin: 2em;
   margin-top: 1em;
   margin-bottom: 1em;
