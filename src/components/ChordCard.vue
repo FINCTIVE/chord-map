@@ -1,19 +1,15 @@
 <template>
   <div class="chord-card">
-    <md-card md-with-hover>
-      <md-card-header>
-        <div>
-          <span class="chord-number md-title">{{ chordRomanNumeral }}</span>
-          <span class="chord-name md-title">{{ chordName }}</span>
-        </div>
-      </md-card-header>
-      <md-card-content class="chord-notes">
-        <span class="chord-note md-headline" v-for="note in chordStructure" :key="note">{{ note }}</span>
-      </md-card-content>
-      <md-card-actions>
-        <md-button @click="$emit('remove-chord-card', chordCardId);">Remove</md-button>
-      </md-card-actions>
-    </md-card>
+    <a-card>
+      <div>
+          <span class="chord-number">{{ chordRomanNumeral }}</span>
+          <span class="chord-name">{{ chordName }}</span>
+      </div>
+      <div>
+        <span class="chord-note" v-for="note in chordStructure" :key="note">{{ note }}</span>
+      </div>
+      <a-button @click="$emit('remove-chord-card', chordCardId);">Remove</a-button>
+    </a-card>
   </div>
 </template>
 <script>
