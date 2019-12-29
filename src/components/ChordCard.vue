@@ -1,14 +1,14 @@
 <template>
-  <div class="chord-card">
+  <div id="chord-card">
     <a-card>
       <div>
-          <span class="chord-number">{{ chordRomanNumeral }}</span>
-          <span class="chord-name">{{ chordName }}</span>
+          <span id="chord-number" class="music-info">{{ chordRomanNumeral }}</span>
+          <span id="chord-name" class="music-info">{{ chordName }}</span>
       </div>
-      <div>
-        <span class="chord-note" v-for="note in chordStructure" :key="note">{{ note }}</span>
+      <div id="chord-structure" class="music-info">
+        <span id="chord-note" v-for="note in chordStructure" :key="note">{{ note }}</span>
       </div>
-      <a-button @click="$emit('remove-chord-card', chordCardId);">Remove</a-button>
+      <a-button id="remove-btn" type="dashed" @click="$emit('remove-chord-card', chordCardId);">Remove</a-button>
     </a-card>
   </div>
 </template>
@@ -19,27 +19,28 @@ export default {
 }
 </script>
 <style scoped>
-.chord-card {
+.music-info {
+  font-size: 20px;
+}
+#chord-card {
   width: 15%;
   margin: 1%;
   display: inline-block;
 }
-.chord-name {
-  float:right;
-  opacity: 50%;
+#chord-name {
+  float: right;
+  opacity: 85%;
 }
-.chord-notes {
+#chord-structure {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.chord-note {
-  margin: 0px 5%;
-  opacity: 70%;
+#chord-note {
+  margin: 8% 5%;
+  opacity: 80%;
 }
-.content * {
-  margin: 5% auto;
-  display: inline-block;
-  text-align: center;
+#remove-btn {
+  float: right;
 }
 </style>
