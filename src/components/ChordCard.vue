@@ -29,7 +29,6 @@ export default {
 }
 #chord-name {
   float: right;
-  opacity: 85%;
 }
 #chord-structure {
   display: flex;
@@ -38,7 +37,6 @@ export default {
 }
 #chord-note {
   margin: 8% 5%;
-  opacity: 80%;
 }
 #remove-btn {
   float: right;
