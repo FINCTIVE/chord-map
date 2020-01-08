@@ -38,6 +38,27 @@ function MusicTheory (iTonicName, iScaleTypeName) {
       // 返回最低(小)对应的半音数值
       return this.pianoRoll.indexOf(tonicNoteName)
     }
+    this.majorChordMap = [
+      [1, 2, 3, 4, 5, 6, 7],
+      [5, 3, 7],
+      [2, 4, 6],
+      [5, 1, 2, 3, 7],
+      [6, 7, 1],
+      [2, 5, 4],
+      [5, 1]
+    ]
+    this.minorChordMap = [
+      [1, 2, 3, 4, 5, 6, 7],
+      [5],
+      [7, 6, 4, 2],
+      [1],
+      [6, 1],
+      [7, 2, 4],
+      [6, 3, 1, 5]
+    ]
+    this.getMajorChordMap = function (numberedNote) {
+      return this.majorChordMap[numberedNote - 1]
+    }
 
     // 初始化
     // 填充pianoRoll 2*12个半音

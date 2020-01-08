@@ -5,9 +5,6 @@
         <a-button @click="showKeyChooser = true">
           <a-icon type="setting" />KEY {{musicTheory.songScale.getChord(1).getName()}}
         </a-button>
-        <a-button @click="showAddChordOptions = true">
-          <a-icon type="plus" />New Card
-        </a-button>
         <a-button id="about-btn" @click="showAboutInfo = true">
           <a-icon type="message" />About
         </a-button>
@@ -57,31 +54,28 @@
           <p>Contact: finctive@qq.com</p>
         </div>
       </a-drawer>
-      <draggable :list="list" :animation="200" ghost-class="ghost-chord-card" id="chord-sequencer">
-        <ChordCard
-          v-for="element in list"
-          :key="element.chordCardId"
-          :chordCardId="element.chordCardId"
-          :chordRomanNumeral="musicTheory.songScale.getRomanNumerals(element.chordNumber)"
-          :chordName="musicTheory.songScale.getChord(element.chordNumber).getName()"
-          :chordStructure="musicTheory.songScale.getChord(element.chordNumber).structure.map(x => x.getName())"
-          v-on:remove-chord-card="removeChordCard"
-        ></ChordCard>
-      </draggable>
+      <ChordMap id="chord-map"
+      :musicTheory="musicTheory"
+      :musicTheorySongScale="musicTheory.songScale"
+      />
+      <ChordSequencer id="chord-sequencer"
+      :musicTheory="musicTheory"
+      :list.sync="list"
+      @add-chord="showAddChordOptions = true"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
-import ChordCard from './components/ChordCard.vue'
 import { MusicTheory } from './musicTheory.js'
-
+import ChordSequencer from './components/ChordSequencer.vue'
+import ChordMap from './components/ChordMap.vue'
 export default {
   name: 'App',
   components: {
-    draggable,
-    ChordCard
+    ChordSequencer,
+    ChordMap
   },
   data () {
     return {
@@ -90,13 +84,6 @@ export default {
         { chordCardId: 2, chordNumber: 5 },
         { chordCardId: 3, chordNumber: 6 },
         { chordCardId: 4, chordNumber: 4 }
-        // { chordCardId: 1, chordNumber: 1 },
-        // { chordCardId: 2, chordNumber: 2 },
-        // { chordCardId: 3, chordNumber: 3 },
-        // { chordCardId: 4, chordNumber: 4 },
-        // { chordCardId: 5, chordNumber: 5 },
-        // { chordCardId: 6, chordNumber: 6 },
-        // { chordCardId: 7, chordNumber: 7 }
       ],
       showKeyChooser: false,
       showAddChordOptions: false,
@@ -108,13 +95,6 @@ export default {
     }
   },
   methods: {
-    removeChordCard: function (chordCardID) {
-      let index = 0
-      for (; this.list[index].chordCardId !== chordCardID; ++index);
-      if (index > -1) {
-        this.list.splice(index, 1)
-      }
-    },
     changeSettings: function (scale) {
       this.musicTheory.songScale = new this.musicTheory.Scale(this.settingTonicName, this.settingScaleTypeName)
       this.showKeyChooser = false
@@ -144,12 +124,12 @@ export default {
   margin-left: auto;
 }
 
-.ghost-chord-card {
-  opacity: 0.5;
+#chord-map {
+  display: flex;
+  justify-content: center;
 }
 
 #chord-sequencer {
-  padding-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
