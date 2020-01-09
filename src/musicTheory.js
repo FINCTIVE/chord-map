@@ -39,7 +39,7 @@ function MusicTheory (iTonicName, iScaleTypeName) {
       return this.pianoRoll.indexOf(tonicNoteName)
     }
     this.majorChordMap = [
-      [1, 2, 3, 4, 5, 6, 7],
+      [2, 3, 4, 5, 6, 7],
       [5, 3, 7],
       [2, 4, 6],
       [5, 1, 2, 3, 7],
@@ -48,10 +48,10 @@ function MusicTheory (iTonicName, iScaleTypeName) {
       [5, 1]
     ]
     this.minorChordMap = [
-      [1, 2, 3, 4, 5, 6, 7],
+      [2, 3, 4, 5, 6, 7],
       [5],
       [7, 6, 4, 2],
-      [1],
+      [2, 5, 1],
       [6, 1],
       [7, 2, 4],
       [6, 3, 1, 5]
@@ -141,6 +141,13 @@ function MusicTheory (iTonicName, iScaleTypeName) {
     this.notes = []
     this.chords = []
     this.scaleType = undefined
+    this.getScaleTypeName = function () {
+      if (this.scaleType === that.ScaleType.Major) {
+        return 'Major'
+      } else {
+        return 'Minor'
+      }
+    }
     this.getNote = function (numberedNote) {
       return this.notes[numberedNote - 1]
     }

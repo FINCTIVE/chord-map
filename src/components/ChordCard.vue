@@ -23,7 +23,7 @@ export default {
   font-size: 20px;
 }
 #chord-card {
-  width: 15%;
+  width: 230px;
   margin: 1%;
   display: inline-block;
 }

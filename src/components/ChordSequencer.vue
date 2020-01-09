@@ -1,16 +1,18 @@
 <template>
-  <draggable :list="list" :animation="200" id="chord-sequencer">
-    <ChordCard
-      v-for="element in list"
-      :key="element.chordCardId"
-      :chordCardId="element.chordCardId"
-      :chordRomanNumeral="musicTheory.songScale.getRomanNumerals(element.chordNumber)"
-      :chordName="musicTheory.songScale.getChord(element.chordNumber).getName()"
-      :chordStructure="musicTheory.songScale.getChord(element.chordNumber).structure.map(x => x.getName())"
-      v-on:remove-chord-card="removeChordCard"
-    ></ChordCard>
-    <a-button shape="circle" icon="plus" size="large" @click="$emit('add-chord')"/>
-  </draggable>
+  <div id="chord-sequencer-wrapper">
+    <draggable :list="list" :animation="200" id="chord-sequencer">
+      <ChordCard
+        v-for="element in list"
+        :key="element.chordCardId"
+        :chordCardId="element.chordCardId"
+        :chordRomanNumeral="musicTheory.songScale.getRomanNumerals(element.chordNumber)"
+        :chordName="musicTheory.songScale.getChord(element.chordNumber).getName()"
+        :chordStructure="musicTheory.songScale.getChord(element.chordNumber).structure.map(x => x.getName())"
+        v-on:remove-chord-card="removeChordCard"
+      ></ChordCard>
+    </draggable>
+    <a-button id="add-btn" shape="circle" icon="plus" size="large" @click="$emit('add-chord')"/>
+  </div>
 </template>
 <script>
 import draggable from 'vuedraggable'
@@ -33,8 +35,21 @@ export default {
   }
 }
 </script>
+
 <style scoped>
-/* .ghost-chord-card {
-  opacity: 0.5;
-} */
+#chord-sequencer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chord-sequencer {
+  display: inline-flex ;
+  justify-content: center;
+  align-items: center;
+}
+#add-btn {
+  display: inline-block;
+  margin-left: 1%;
+}
 </style>
