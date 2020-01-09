@@ -1,24 +1,12 @@
-# vue-material-wwwq
+# Chord Helper
 
-## Project setup
-```
-yarn install
-```
+### Demo
+http://q2rqps.coding-pages.com/
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+### About
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Built with Vue.js, Ant Design of Vue, AntV-G6, VueDraggable
 
-### Lints and fixes files
-```
-yarn lint
-```
+目前仍在开发中，欢迎提出你的意见或建议！
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+联系邮箱: finctive@qq.com
