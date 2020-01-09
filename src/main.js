@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 // import AntDesign from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css' // or 'ant-design-vue/dist/antd.less'
 // Vue.use(AntDesign)
+import 'ant-design-vue/dist/antd.css'
 import { Button, Card, Modal, Radio, Drawer, Icon } from 'ant-design-vue'
 
 Vue.component(Button.name, Button)
