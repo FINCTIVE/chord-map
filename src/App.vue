@@ -21,6 +21,7 @@
           <a-radio-button value="D">D</a-radio-button>
           <a-radio-button value="E">E</a-radio-button>
           <a-radio-button value="F">F</a-radio-button>
+          <a-radio-button value="G">G</a-radio-button>
           <a-radio-button value="A">A</a-radio-button>
           <a-radio-button value="B">B</a-radio-button>
         </a-radio-group>
