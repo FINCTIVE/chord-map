@@ -38,6 +38,7 @@ export default {
 
 <style scoped>
 #chord-sequencer-wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -51,8 +52,8 @@ export default {
   justify-content: center;
 }
 #add-btn {
-  flex-basis: auto;
   display: inline-flex;
+  /* flex-grow: 1; */
   justify-content: center;
   margin-left: 1%;
 }
