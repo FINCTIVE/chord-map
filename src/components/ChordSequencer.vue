@@ -40,16 +40,20 @@ export default {
 #chord-sequencer-wrapper {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
 }
 
 #chord-sequencer {
+  flex-basis: 70%;
   display: inline-flex ;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 }
 #add-btn {
-  display: inline-block;
+  flex-basis: auto;
+  display: inline-flex;
+  justify-content: center;
   margin-left: 1%;
 }
 </style>

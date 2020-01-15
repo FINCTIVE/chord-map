@@ -2,7 +2,7 @@
   <div id="app">
     <!-- 页面顶端的工具栏 -->
     <div id="toolbar">
-      <a-button @click="showKeyChooser = true">
+      <a-button id="setting-btn" @click="showKeyChooser = true">
         <a-icon type="setting" />KEY {{musicTheory.songScale.getChord(1).getName()}}
       </a-button>
       <a-button id="github-btn" @click="openGithubPage">
@@ -132,19 +132,15 @@ export default {
 </script>
 <style scoped>
 #toolbar{
-  margin: 0 0.5%;
+  margin: 0.5% 0;
   display: flex;
-  align-items: left;
 }
+
 #toolbar *{
-  margin: 1% 0.5%;
+  margin: 0 0.5%;
 }
 
 #toolbar #github-btn{
   margin-left: auto;
-}
-
-#about-info {
-  padding: 0 2%;
 }
 </style>
