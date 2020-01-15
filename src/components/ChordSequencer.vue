@@ -1,5 +1,5 @@
 <template>
-  <div id="chord-sequencer-wrapper">
+  <div>
     <draggable :list="list" :animation="200" id="chord-sequencer">
       <ChordCard
         v-for="element in list"
@@ -10,8 +10,14 @@
         :chordStructure="musicTheory.songScale.getChord(element.chordNumber).structure.map(x => x.getName())"
         v-on:remove-chord-card="removeChordCard"
       ></ChordCard>
+      <div
+          slot="footer"
+          key="footer"
+          id="add-btn-wrapper"
+        >
+          <a-button shape="circle" icon="plus" size="large" @click="$emit('add-chord')"/>
+      </div>
     </draggable>
-    <a-button id="add-btn" shape="circle" icon="plus" size="large" @click="$emit('add-chord')"/>
   </div>
 </template>
 <script>
@@ -37,24 +43,16 @@ export default {
 </script>
 
 <style scoped>
-#chord-sequencer-wrapper {
-  width: 100%;
+#chord-sequencer {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: center;
 }
 
-#chord-sequencer {
-  flex-basis: 90%;
-  display: inline-flex ;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-#add-btn {
+#add-btn-wrapper {
+  margin-left: 2%;
   display: inline-flex;
-  /* flex-grow: 1; */
   justify-content: center;
-  margin-left: 1%;
+  flex-direction: column;
 }
 </style>
