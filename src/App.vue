@@ -143,4 +143,17 @@ export default {
 #toolbar #github-btn{
   margin-left: auto;
 }
+
+#app {
+    /*material 灰色*/
+    /* background: #e2e1e0; */
+    /* 隐藏滚动条 */
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+#app::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
 </style>

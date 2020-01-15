@@ -114,8 +114,8 @@ export default {
     this.graph = new G6.Graph({
       container: 'chord-map-g6',
       // renderer: 'svg',
-      width: 1400,
-      height: 400,
+      width: 800,
+      height: 350,
       modes: {
         default: ['drag-node']
       },

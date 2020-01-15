@@ -46,7 +46,7 @@ export default {
 }
 
 #chord-sequencer {
-  flex-basis: 70%;
+  flex-basis: 90%;
   display: inline-flex ;
   flex-wrap: wrap;
   justify-content: center;
