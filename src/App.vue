@@ -9,7 +9,7 @@
         <a-icon type="github" />Github
       </a-button>
       <a-button id="about-btn" @click="showAboutInfo = true">
-        <a-icon type="message" />About
+        <a-icon type="message" />Help
       </a-button>
     </div>
 
@@ -50,13 +50,33 @@
 
     <!-- 关于信息 -->
     <a-drawer
-      title="About"
+      title="Help"
       :placement="'bottom'"
+      :height="500"
       :closable="true"
       :visible="showAboutInfo"
       @close="showAboutInfo = false"
     >
       <div id="about-info">
+        <p>Usage</p>
+        <p>Drag the chord cards to arrange chord sequnence. Orange nodes and paths represent current chord progression.</p>
+        <br>
+
+        <p>使用说明：</p>
+        <p>拖动和弦卡片进行排序。橙色节点以及路径代变当前和弦走向。</p>
+
+        <br>
+
+        <p>More information on Github | 更多信息请到Github仓库查看</p>
+        <div>
+          <a-button id="github-btn" @click="openGithubPage">
+            <a-icon type="github" />Github, Click ME!!!
+          </a-button>
+        </div>
+
+        <br>
+        <br>
+
         <p>Created by FINCTIVE(镜岛)</p>
         <p>
           Built with
@@ -65,8 +85,6 @@
           <a href="https://g6.antv.vision/" target="_blank">AntV-G6</a>,
           <a href="https://sortablejs.github.io/Vue.Draggable" target="_blank">VueDraggable</a>
         </p>
-        <p>Do you have any suggestions? Please send me an email!😀</p>
-        <p>Contact: finctive@qq.com</p>
       </div>
     </a-drawer>
 
@@ -125,7 +143,7 @@ export default {
       this.showAddChordOptions = false
     },
     openGithubPage: function () {
-      window.open('https://github.com/FINCTIVE/chord-helper')
+      window.open('https://github.com/FINCTIVE/chord-map')
     }
   }
 }
