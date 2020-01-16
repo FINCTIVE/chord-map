@@ -1,2 +1,2 @@
-rm -f dist
+rm ./dist
 npm run build
