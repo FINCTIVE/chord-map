@@ -6,7 +6,9 @@
 </template>
 
 <script>
-import G6 from '@antv/g6'
+// import G6 from '@antv/g6'
+// 从cdn导入
+import G6 from '_g6'
 export default {
   name: 'ChordMap',
   props: ['musicTheory', 'musicTheorySongScale', 'list'],
