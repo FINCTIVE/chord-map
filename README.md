@@ -1,7 +1,5 @@
 一个为方便编写和弦进行而诞生的网页工具。
 
-[English](./README_en.md) | 简体中文
-
 ![ljBq39.png](https://s2.ax1x.com/2020/01/16/ljBq39.png)
 
 ## 在线使用
@@ -16,7 +14,3 @@ http://chordmap.vision/
 ### 关于
 
 本项目使用了以下开源项目：Vue.js, Ant Design of Vue, AntV-G6, VueDraggable
-
-欢迎提意见/吐槽！我会认真考虑你的想法 (o゜▽゜)o☆
-
-联系邮箱: finctive@qq.com

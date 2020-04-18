@@ -117,10 +117,17 @@ export default {
   data () {
     return {
       list: [
+        // { chordCardId: 1, chordNumber: 1 },
+        // { chordCardId: 2, chordNumber: 5 },
+        // { chordCardId: 3, chordNumber: 6 },
+        // { chordCardId: 4, chordNumber: 4 }
         { chordCardId: 1, chordNumber: 1 },
-        { chordCardId: 2, chordNumber: 5 },
-        { chordCardId: 3, chordNumber: 6 },
-        { chordCardId: 4, chordNumber: 4 }
+        { chordCardId: 2, chordNumber: 2 },
+        { chordCardId: 3, chordNumber: 3 },
+        { chordCardId: 4, chordNumber: 4 },
+        { chordCardId: 5, chordNumber: 5 },
+        { chordCardId: 6, chordNumber: 6 },
+        { chordCardId: 7, chordNumber: 7 }
       ],
       lastChordCardId: 5, // 记录最后一个和弦卡片的id
       showKeyChooser: false,

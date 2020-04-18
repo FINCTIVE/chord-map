@@ -1,4 +1,4 @@
-cd ./dist
+cd  ../../dist
 git init
 git add .
 git commit -m "deploy static page"
