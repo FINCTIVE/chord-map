@@ -11,7 +11,7 @@ module.exports = {
   },
   chainWebpack: config => {
     config.resolve.alias
-      .set('@ant-design/icons/lib/dist$', path.resolve(__dirname, 'src/antdIcon.js'))
+      .set('@ant-design/icons/lib/dist$', path.resolve(__dirname, 'src/ExportedAntdIcon.js'))
   },
   configureWebpack: config => {
     config.externals = {
